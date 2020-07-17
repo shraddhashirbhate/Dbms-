@@ -1,0 +1,62 @@
+
+create database college;
+=====================
+use college;
+
+create table SEMP(EMPNO char(4),EMPNAME CHAR(20),BASIC FLOAT(9,2),DEPTNO CHAR(2),DEPTHEAD CHAR(4));
+
+-- insert into SEMP values('0001','SUNIL','6000','10',NULL);
+--insert into SEMP values('0002','HIREN','8000','20',NULL);
+--insert into SEMP values('0003','ALI','4000','10','0001');
+--insert into SEMP value('0004','GEORGE','6000',NULL,'0002');
+
+--------------------------------------------------------------------------
+create table SDEPT(DEPTNO Char(2),DEPTNAME Char(15));
+
+-- insert into SDEPT values('10','Development');
+-- insert into SDEPT values('20','Training');
+--------------------------------------------------------------------------------------
+create table SUPPLIER(`S#` varchar(10),Sname varchar(50),Status int(4),City varchar(30));
+--insert into Supplier values('S1','Rushab','10','chandrpur');
+-- insert into Supplier values('S2','Shubham','20','Mumbai');
+--insert into Supplier values('S3','Subhod','30','Jalgaon');
+
+-------------------------------------------------------------------------------------------
+ create table PARTS(`P#` varchar(10),Pname varchar(20),Color varchar(20),Weight int(4),City varchar(10));
+
+-- insert into Parts values('P1','Clutch','Black','2','Mumbai');
+--insert into Parts values('P2','Clutch','Black','2','Mumbai');
+--insert into Parts values('P3','Break','Black','4','Ulhasnagar');
+--insert into Parts values('P3','nutbols','Black','12','Ulhasnagar');
+--insert into Parts values('P6','clutch','Black','13','Ulhasnagar');
+-------------------------------------------------------------------------------------------------
+create table PROJECTS(`J#` varchar(10),Jname varchar(10),City varchar(10));
+
+--insert into projects values('J1','shopping','athens');
+--insert into projects values('J2','ola_book','athens');
+--insert into projects values('J3','movie_book','athens');
+--insert into projects values('J4','movie_book','London');
+--insert into projects values('J5','movie_book','paris');
+--------------------------------------------------------------------------------------------------------
+create table SPJ(`S#` varchar(10),`P#` varchar(10),`J#` varchar(10),Qty int(10));
+==================================================================================
+Operations:
+
+5-- select * from Supplier;
+6--select `S#`,Sname from Supplier;
+7--select pname, color from parts where city="london";
+--update  parts set city="London" where `P#`='P1';
+8--select pname, color from parts where city="london";
+10--select Jname from projects where city="athens";
+11--select * from parts where weight between 10 and 12;
+12--select Sname from supplier where status>=20;
+13--select Sname from supplier where not city="London";
+--select * from supplier where not city="London";
+14--select city from supplier;
+15--select `P#`,Pname,color,weight/1000.0,city from parts;
+--select `P#`,Pname,color,weight*1000,city from parts;
+
+
+
+
+
