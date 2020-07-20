@@ -1,0 +1,63 @@
+							SQL Exercise 3
+							-------------------
+
+1. Display all the Supplier names with the initial letter capital.
+ANS->
+-------
+	Select concat (substr(upper(Sname),1,1),substr(lower(Sname),2,length(sname))) 
+	from Supplier;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+2. Display all the Supplier names in upper case.
+ANS->
+-------
+	select upper(Sname) from Supplier;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+3. Display all the Supplier names in lower case.
+ANS->
+-------
+	select lower(Sname) from Supplier;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+4. Display all the Supplier names padded to 25 characters, with spaces on the left.
+ANS->
+-------
+	Select lpad(Sname,25) from Supplier;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+5. Display all the Supplier names (with ‘la’ replaced by ‘ro’).
+ HINT: REPLACE.
+ANS->
+-------
+	select replace(sname,'la','ro') from supplier;
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Implement the above command such that ‘l’ is replaced with ‘r’ and ‘a’ is replaced
+with ‘o’.
+ANS->
+-------
+	select Replace(replace(Sname,'l', 'r'), 'a', 'o') from supplier;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+7. Display the Supplier names and the lengths of the names.
+ANS->
+-------
+	select sname, length(sname) as length from supplier;
+-----------------------------------------------------------------------------------------------------------------------------------------------
+8. Use the soundex function to search for a supplier by the name of ‘BLOKE’.
+ANS->
+-------
+	select * from supplier where soundex(sname) = soundex('BLOKE');
+-----------------------------------------------------------------------------------------------------------------------------------------------
+9. Display the Supplier name and the status (as Ten, Twenty, Thirty, etc.).
+ANS->
+-------
+	
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+10. Display the current day (e.g. Thursday).
+ANS->
+-------
+	select dayname(now());
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
