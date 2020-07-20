@@ -1,0 +1,22 @@
+						Assignment
+						---------------
+
+1. Display all the Supplier names with the initial letter capital.
+ANS->
+-------
+	Select concat (substr(upper(Sname),1,1),substr(lower(Sname),2)) 
+	from Supplier;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+2)  Centre justification in MySQl
+Ans->
+--------
+	Select Rpad(Lpad(Sname,20),20) from Supplier;
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+3) Display the name with all the vowels removed from supplier table using  Translate().
+Ans->
+-------
+	select Replace(Replace(Replace(Replace(replace(Sname,'a', ''), 'e', ''), 'i', ''),'o', ''), 'u', '') 
+	from supplier;
+----------------------------------------------------------------------------------------------------------------------------------------------
