@@ -1,0 +1,76 @@
+							SQL Exercise 5
+							-------------------
+
+1. Display the Supplier name and the Quantity sold.
+Ans->
+	select Sname, Qty from supplier, supplier_Parts_Project
+	where supplier_Parts_Project.`S#` = supplier.`S#` ;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+2. Display the Part name and Quantity sold.
+Ans->
+	select Pname, QTY from Parts, supplier_Parts_Project
+	where supplier_Parts_Project.`P#` = Parts.`P#`;
+-------------------------------------------------------------------------------------------------------------------------------------------
+3. Display the Project name and Quantity sold.
+Ans->
+	select Jname, QTY from supplier_Parts_Project, projects
+	where supplier_Parts_Project.`J#` = Projects.`J#`;
+-------------------------------------------------------------------------------------------------------------------------------------------
+4. Display the Supplier name, Part name, Project name and Quantity sold.
+Ans->
+	select SName, PName, JName, QTY 
+	from supplier, Parts, Projects, supplier_Parts_Project
+	where supplier_Parts_Project.`J#` = Projects.`J#`
+	and supplier_Parts_Project.`P#` = Parts.`P#`
+	and supplier_Parts_Project.`S#` = supplier.`S#`;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+5. Display the Supplier name, Supplying Parts to a Project in the same City.
+Ans->
+	select Sname, PName from supplier, Projects
+	where supplier.City = Parts. CIty;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+6. Display the Part name that is ‘Red’ is color, and the Quantity sold.
+Ans->
+	select Pname, Qty from Parts, supplier_Parts_Project
+	where supplier_Parts_Project.`P#` = Parts.`P#`
+	and color = 'RED';
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+7. Display all the Quantity sold by Suppliers with the Status = 20.
+Ans->
+	select sname,QTY from  supplier_Parts_Project, supplier
+	where supplier_Parts_Project.`S#` = Supplier.`S#`
+	and status = 20;
+-------------------------------------------------------------------------------------------------------------------------------------------
+8. Display all the Parts and Quantity with a Weight > 14.
+Ans->
+	select pName, Qty from supplier_Parts_Project, parts
+	where supplier_Parts_Project.`P#` = Parts.`P#`
+	and weight > 14;
+-------------------------------------------------------------------------------------------------------------------------------------------
+9. Display all the Project names and City, which has bought more than 500 Parts.
+Ans->
+	select projects.Jname , projects.city
+	from projects,SUPPLIER_PARTS_PROJECT
+	where projects.`J#` = SUPPLIER_PARTS_PROJECT.`J#` and 
+	supplier_parts_project.Qty > 500;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+10. Display all the Part names and Quantity sold that have a Weight less than 15.
+Ans->
+	select  parts.Pname , SUPPLIER_PARTS_PROJECT.Qty
+	from PARTS,SUPPLIER_PARTS_PROJECT
+	where parts.`P#` = SUPPLIER_PARTS_PROJECT.`P#`and 
+    	 PARTS.weight < 15;
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+11. Display all the Employee names and the name of their Managers. 
+Ans->
+
+	select  b.ename as employee ,a.ename as manager
+	from emp a , emp b 
+	where b.mgr = a.empno ;
+-------------------------------------------------------------------------------------------------------------------------------------------
