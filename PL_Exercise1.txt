@@ -1,0 +1,139 @@
+							MySQL
+							----------
+Exercise 1
+-------------
+
+1. 	Write a program that computes the perimeter and the area of a rectangle. Define
+	your own values for the length and width. (Assuming that L and W are the length
+	and width of the rectangle, Perimeter = 2*(L+W) and Area = L*W.
+Ans->
+	create table tempp
+	(
+	calc varchar(50),
+    	res float(7,2)
+	);
+	--------------*************Procedure*****************-----------------
+	DELIMITER #
+	Create Procedure Area()
+	BEGIN
+		Declare x int(4) default 50;
+		Declare y int(4) default 50;
+		Declare area float(7,2) ;
+		Declare Perimeter float(7,2);
+        		set area =  x*y;
+        		set Perimeter = 2*(x+y);
+		Insert into tempp (calc, res) values('Area Of rectangle', area);
+		Insert into tempp (calc, res) values('Perimeter Of rectangle', perimeter);
+ 	END; #
+	DELIMITER ;
+	--------------***************************************-----------------
+    	
+	CALL AREA();
+    	select * from tempp;
+----------------------------------------------------------------------------------------------------------------------------------------------------
+2. 	Write a program that declares an integer variable called num, assigns a value to it,
+	and computes and inserts into the tempp table the value of the variable itself, its
+	square, and its cube.
+Ans->
+	DELIMITER #
+	Create Procedure comp(num int(4))
+	BEGIN
+		Declare sqr float(12,2);
+		Declare cubeN float(12,2);
+		set sqr = num*num;
+		set cubeN = num*num*num;		
+		Insert into tempp (calc, res) values('num', num);
+		Insert into tempp (calc, res) values('Square of number', sqr);
+		Insert into tempp (calc, res) values('Cube of number', cubeN);
+ 	END; #
+	DELIMITER ;
+	 
+    	call Comp(4);
+   	select * from  tempp;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+3. 	Convert a temperature in Fahrenheit (F) to its equivalent in Celsius (C) and vice
+	versa. The required formulae are:- C= (F-32)*5/9
+	F= 9/5*C + 32
+Ans->
+	DELIMITER #
+	Create Procedure Temperature(C int(3))
+	BEGIN
+		
+		Declare F float(12,2);
+		set F = 9/5*C + 32;
+		set C = (F-32)*5/9;	
+		Insert into tempp (calc, res) values('Temperature in C', C);
+		Insert into tempp (calc, res) values('Temperature in F', F);
+ 	END; #
+	DELIMITER ;
+	 
+    	call Temperature(4);
+   	select * from  tempp;	
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+4. 	Convert a number of inches into yards, feet, and inches. For example, 124 inches
+	equals 3 yards, 1 foot, and 4 inches.
+Ans->
+	
+	DELIMITER #
+	Create Procedure Inches(I float(7,2))
+	BEGIN
+		Declare Y float(4,2);
+		Declare F float(4,2);
+		set Y = I/36;
+		set F = I/12;	
+		Insert into tempp (calc, res) values('Inches', I);
+		Insert into tempp (calc, res) values('Yard', Y);
+		Insert into tempp (calc, res) values('Feet', F);
+ 	END; #
+	DELIMITER ;
+	 
+    	call Temperature(4);
+   	select * from  tempp;	
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+5. 	Write a program that enables a user to input an integer. The program should then
+	state whether the integer is evenly divisible by 5.
+Ans->
+
+	DELIMITER #
+	Create Procedure DIVS(num int(4))
+	BEGIN
+		Declare res int(4);
+		If mod(num, 5) = 0 then 
+			Insert into tempp values (num, 'Divisible by 5');
+		else
+			Insert into tempp values (num, ' Not Div by 5');
+		end if;
+ 	END; #
+	DELIMITER ;
+	 
+
+    	call DIVS(126);
+       	select * from tempp;
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. 	Your block should read in two real numbers and tell whether the product of the two
+	2.numbers is equal to or greater than 100. 
+Ans->
+	Delimiter //
+	create procedure realN(num1 int(4), num2 int(4))
+	Begin
+		Declare res int(7);
+		set res = num1 * num2;
+		If res = 100 then
+			Insert into tempp values(res, 'equal');
+		ElseIf res > 100 then
+			Insert into tempp values(res, 'Greater');
+		else
+			Insert into tempp values(res, 'Less');
+		End If;
+	End; //
+	Delimiter ;
+    
+    	call realN(10,10);
+   	select * from tempp;

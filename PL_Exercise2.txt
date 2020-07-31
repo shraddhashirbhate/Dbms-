@@ -1,0 +1,93 @@
+							MySQL
+						               Exercise 2
+						             ----------------
+
+1. 	Select from any table a number and determine whether it is within a given range (for
+	example, between 1 and 10).
+Ans->
+--------
+	 Delimiter //
+	create procedure abc()
+	BEGIN
+		declare x int(4) default 1;
+		select sal into x from emp;
+			If x between 1 and 11 then
+				Insert into comp values (x, 'In Range');
+			else	
+				Insert into comp values (x, 'NotInRange');
+			End If;
+	END; //
+	Delimiter ;
+   
+    	call abc();
+    	select * from comp;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. 	Select from any table three positive integers representing the sides of a triangle, and
+	determine whether they form a valid triangle. Hint: In a triangle, the sum of any two
+	sides must always be greater than the third side.
+Ans->
+--------
+	Delimiter //
+	create procedure AreaT()
+	Begin
+		Declare x int(4) default 1;
+		Declare y int(4) default 1;
+		Declare z int(4) default 1;
+		select s1, s2, s3  into x, y, z  from sides where s1 = 5;
+		case
+		when x+y=z then
+			Insert into tempp values(1, ' Valid Triangle');
+		When y+z=x then 
+			Insert into tempp values(2, ' Valid Triangle');
+		When x+z=y then 
+			Insert into tempp values(3, ' Valid Triangle');
+		Else
+			Insert into tempp values(4, ' InValid Triangle');
+		End case;
+	End; //
+	Delimiter ;
+	
+    
+	Call AreaT();
+	Select * from tempp;
+		
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. 	Check if a given a year is a leap year. The condition is:- year should be (divisible by 4
+	and not divisible by 100) or (divisible by 4 and divisible by 400.). The year should be
+	Selected from some table.
+Ans->
+--------
+	Delimiter //
+	create procedure LeapY(year int(4))
+	Begin
+		If  mod(year,4) = 0 and mod(year,100) !=0 then
+			If  mod(year,4)=0 and mod(year,400) =0 then
+				Insert into tempp values (year,'LeapYear');
+			Else
+				Insert into tempp values(year, 'Not LeapYear');
+			End If;
+			Insert into tempp values (year,'LeapYear');
+		Else
+			Insert into tempp values(year, 'Not LeapYear');
+		End If;
+	End; //
+	Delimiter ;
+	
+
+	call LeapY(2021);
+    	select * from tempp;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. 	Write a program that Selects from any table two character strings. Your program should
+	then determine if one character string exists inside another character string.
+Ans-> 
+--------
+	Delimiter //
+	create procedure LeapY()
+	Begin
+		
+	End; //
+	Delimiter ;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
